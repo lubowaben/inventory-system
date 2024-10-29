@@ -1,0 +1,12 @@
+{% extends "inventory/base.html" %}
+
+{% block content %}
+<h2>Add Notification</h2>
+
+<form method="post" action="{% url 'add_notification' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Notification</button>
+</form>
+
+{% endblock %}

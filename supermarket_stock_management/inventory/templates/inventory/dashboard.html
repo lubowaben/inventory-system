@@ -1,0 +1,85 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-4">Manager Dashboard</h1>
+    <div class="row">
+        <!-- Suppliers Management -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Suppliers</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'supplier-list' %}" class="btn btn-primary">Manage Suppliers</a>
+                    <a href="{% url 'add-supplier' %}" class="btn btn-success">Add New Supplier</a>
+                </div>
+            </div>
+        </div>
+        <!-- Cashiers Management -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Cashiers</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'manage-cashiers' %}" class="btn btn-primary">Manage Cashiers</a>
+                    <a href="{% url 'add_cashier' %}" class="btn btn-success">Add New Cashier</a>
+                </div>
+            </div>
+        </div>
+        <!-- Products Management -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Products</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'product-list' %}" class="btn btn-primary">Manage Products</a>
+                    <a href="{% url 'add-product' %}" class="btn btn-success">Add New Product</a>
+                </div>
+            </div>
+        </div>
+        <!-- Transactions Management -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Transactions</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'transaction_list' %}" class="btn btn-primary">View Transactions</a>
+                    <a href="{% url 'add_transaction' %}" class="btn btn-success">Add New Transaction</a>
+                </div>
+            </div>
+        </div>
+        <!-- Notifications Management -->
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Notifications</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'notification_list' %}" class="btn btn-primary">veiw Notification</a>
+                    <a href="{% url 'add_notification' %}" class="btn btn-success">Add Notification</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+         <!-- report management -->
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>reports</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'export_excel' %}" class="btn btn-primary">Export Excel</a>
+                    <a href="{% url 'export_word' %}" class="btn btn-primary">Export Word</a>
+                    <a href="{% url 'stock_report' %}" class="btn btn-primary">stock report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

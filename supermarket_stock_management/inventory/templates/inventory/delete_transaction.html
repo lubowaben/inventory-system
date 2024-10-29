@@ -1,0 +1,15 @@
+{% extends "inventory/base.html" %}
+
+{% block content %}
+<h2>Delete Transaction</h2>
+
+<p>Are you sure you want to delete the transaction for <strong>{{ transaction.product.name }}</strong>?</p>
+
+<form method="post" action="{% url 'delete_transaction' transaction.id %}">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+</form>
+
+<a href="{% url 'dashboard' %}">Cancel</a>
+
+{% endblock %}

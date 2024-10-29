@@ -1,0 +1,82 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-4">Cashier Dashboard</h1>
+    <div class="row">
+        <!-- Process Sales -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Process Sales</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{% url 'process_sale' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="product">Select Product</label>
+                            <select id="product" name="product_id" class="form-control" aria-describedby="productHelp">
+                                {% for product in products %}
+                                    <option value="{{ product.id }}">{{ product.name }} ({{ product.quantity }} in stock)</option>
+                                {% endfor %}
+                            </select>
+                            <small id="productHelp" class="form-text text-muted">Choose the product you wish to sell.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control" min="1" required>
+                            <small id="quantityHelp" class="form-text text-muted">Enter the quantity to sell.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Process Sale</button>
+                    </form>
+                    {% if form.errors %}
+                        <div class="alert alert-danger mt-3">
+                            Please correct the errors below.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- Transactions -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Transactions</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'transaction_list' %}" class="btn btn-primary mb-2">View Transactions</a>
+                    <a href="{% url 'add_transaction' %}" class="btn btn-success">Add Transaction</a>
+                </div>
+            </div>
+        </div>
+        <!-- Notifications -->
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Notifications</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'notification_list' %}" class="btn btn-primary mb-2">view Notification</a>
+                    <a href="{% url 'add_notification' %}" class="btn btn-success">Add Notification</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+         <!-- report management -->
+         <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>reports</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'export_excel' %}" class="btn btn-primary">Export Excel</a>
+                    <a href="{% url 'export_word' %}" class="btn btn-primary">Export Word</a>
+                    <a href="{% url 'stock_report' %}" class="btn btn-primary">stock report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

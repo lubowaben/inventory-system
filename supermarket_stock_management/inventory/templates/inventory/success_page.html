@@ -1,0 +1,18 @@
+{% extends "inventory/base.html" %}
+
+{% block title %}
+    Sale Success
+{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1>Transaction Successful</h1>
+    <p>Your transaction has been successfully processed.</p>
+
+    <div class="mt-4">
+        <a href="{% url 'product-list' %}" class="btn btn-primary">Back to Products</a>
+        <a href="{% url 'transaction-list' %}" class="btn btn-secondary">View Transactions</a>
+        <a href="{% url 'dashboard' %}" class="btn btn-success">Go to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

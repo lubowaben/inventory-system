@@ -1,0 +1,33 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Manage Cashiers{% endblock %}
+
+{% block content %}
+    <h2>Manage Cashiers</h2>
+    <a href="{% url 'add_cashier' %}">Add New Cashier</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cashier in cashiers %}
+            <tr>
+                <td>{{ cashier.username }}</td>
+                <td>{{ cashier.email }}</td>
+                <td>
+                    <a href="{% url 'edit_cashier' cashier.pk %}">Edit</a>
+                    <a href="{% url 'delete_cashier' cashier.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No cashiers available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

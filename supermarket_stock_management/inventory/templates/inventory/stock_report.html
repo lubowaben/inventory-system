@@ -1,0 +1,31 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}
+    Stock Report
+{% endblock %}
+
+{% block content %}
+    <h1>Stock Report</h1>
+
+    <!-- Export Button -->
+    <form method="get">
+        <button type="submit" name="export" value="true">Export to CSV</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity Available</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr {% if product.low_stock %}class="low-stock"{% endif %}>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

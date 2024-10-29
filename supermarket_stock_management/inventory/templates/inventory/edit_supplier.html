@@ -1,0 +1,13 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Edit Supplier{% endblock %}
+
+{% block content %}
+<h2>Edit Supplier</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+<a href="{% url 'supplier-list' %}">Back to Supplier List</a>
+{% endblock %}

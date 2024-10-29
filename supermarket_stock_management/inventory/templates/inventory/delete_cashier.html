@@ -1,0 +1,13 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Delete Cashier{% endblock %}
+
+{% block content %}
+    <h2>Delete Cashier</h2>
+    <p>Are you sure you want to delete {{ cashier.username }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'manage-cashiers' %}">Cancel</a>
+    </form>
+{% endblock %}
